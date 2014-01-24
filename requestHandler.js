@@ -31,18 +31,18 @@ function upload(response,request)
  console.log("parsing done");
  /* possible error on windows systems :
  tried to rename to an already existing file */
- fs.rename(files.upload.path,"/home/liodebian/test.pdf", function (err)
+ fs.rename(files.upload.path,"c:\\tmp\\test.pdf", function (err)
  {
  if (err)
  {
- fs.unlink("/home/liodebian/test.pdf");
+ fs.unlink("c:\\tmp\\test.pdf");
  console.log("Value of files.upload.path : " + files.upload.path );
- fs.rename(files.upload.path,"/home/liodebian/test.pdf");
+ fs.rename(files.upload.path,"c:\\tmp\\test.pdf");
  }
  });
  response.writeHead(200, {"Content-Type" : "text/html" } );
  response.write("Received pdf: <br/>");
- response.write("<a href="/show">/show</a>");
+ response.write("<a href='/show'>/show</a>");
  response.end();
  });
 }
@@ -50,7 +50,7 @@ function upload(response,request)
 function show(response, request)
 {
  console.log("Request handler show was called.");
- fs.readFile("/home/liodebian/test.pdf","binary", function(error,file)
+ fs.readFile("c:\\tmp\\test.pdf","binary", function(error,file)
  {
  if (error)
  {
