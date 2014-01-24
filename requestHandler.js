@@ -13,7 +13,7 @@ function start(response){
   "<body>" +
   "<form action='/upload' enctype='multipart/form-data' method='post'>" +
   "<input type='file' name='upload'></input>" +
-  "<input type='submit' value='Upload file' />" +
+  "<input type='submit' value='Subir Archivo Coqueto' />" +
   "</form>" +
   "</body>" +
   "</html>" ;
