@@ -8,7 +8,7 @@ var handle = {}
 handle["/"] = requestHandlers.start;
 handle["/start"] = requestHandlers.start;
 handle["/upload"] = requestHandlers.upload;
-handle["/show"] = requestHandlers.show;
+handle["/ver"] = requestHandlers.ver  ;
 
 //Aqui jalo la funcion que tengo en router.js
   server.start(router.route,handle);
