@@ -43,24 +43,20 @@ function upload(response,request){
   });
 }
 
-function show(response, request)
-{
- console.log("Request handler show was called.");
- fs.readFile("/home/liodebian/hola.pdf","binary", function(error,file)
- {
- if (error)
- {
- response.writeHead(500, {"Content-Type": "text/plain" });
- response.write(error + "\n");
- response.end();
- }
- else
- {
- response.writeHead(200, {"Content-Type" : "application/pdf" });
- response.write(file, "binary" );
- response.end();
- }
- });
+function show(response, request){
+  console.log("Request handler show was called.");
+  fs.readFile("/home/liodebian/hola.pdf","binary", function(error,file){
+    if (error){
+      response.writeHead(500, {"Content-Type": "text/plain" });
+      response.write(error + "\n");
+      response.end();
+    }
+    else{
+      response.writeHead(200, {"Content-Type" : "application/pdf" });
+      response.write(file, "binary" );
+      response.end();
+    }
+  });
 }
 exports.start = start;
 exports.upload = upload;
