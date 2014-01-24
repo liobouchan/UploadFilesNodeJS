@@ -37,7 +37,7 @@ function upload(response,request)
  {
  fs.unlink("c:\\tmp\\hola.pdf");
  console.log("Value of files.upload.path : " + files.upload.path );
- fs.rename(files.upload.path,"c:\\tmp\\hola.pdf");
+ fs.rename(files.upload.path,"/home/liodebian/hola.pdf");
  }
  });
  response.writeHead(200, {"Content-Type" : "text/html" } );
@@ -50,7 +50,7 @@ function upload(response,request)
 function show(response, request)
 {
  console.log("Request handler show was called.");
- fs.readFile("c:\\tmp\\hola.pdf","binary", function(error,file)
+ fs.readFile("/home/liodebian/hola.pdf","binary", function(error,file)
  {
  if (error)
  {
