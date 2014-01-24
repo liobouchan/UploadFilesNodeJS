@@ -22,32 +22,27 @@ function start(response){
   response.end();
 }
 
-function upload(response,request)
-{
- console.log("Request handler upload was called.");
- var form = new formidable.IncomingForm();
- console.log("about to parse");
- form.parse(request, function(error,fields,files)
- {
- console.log("parsing done");
- /* possible error on windows systems :
- tried to rename to an already existing file */
- fs.rename(files.upload.path,"/home/liodebian/hola.pdf", function (err)
- {
- if (err)
- {
- fs.unlink("/home/liodebian/hola.pdf");
- console.log("Value of files.upload.path : " + files.upload.path );
- fs.rename(files.upload.path,"/home/liodebian/hola.pdf");
- }
- });
- response.writeHead(200, {"Content-Type" : "text/html" } );
- response.write("Received pdf: <br/>");
- response.write("<a href='/show'>/show</a>");
- response.end();
- });
+function upload(response,request){
+  console.log("Request handler upload was called.");
+  var form = new formidable.IncomingForm();
+  console.log("about to parse");
+  form.parse(request, function(error,fields,files){
+    console.log("parsing done");
+    /* En windows tuve un error por que tenía que poner un archivo existente */
+    fs.rename(files.upload.path,"/home/liodebian/hola.pdf", function (err){
+      if (err){
+        fs.unlink("/home/liodebian/hola.pdf");
+        console.log("Value of files.upload.path : " + files.upload.path );
+        fs.rename(files.upload.path,"/home/liodebian/hola.pdf");
+      }
+    });
+    response.writeHead(200, {"Content-Type" : "text/html" } );
+    response.write("Received pdf: <br/>");
+    response.write("<a href='/show'>/show</a>");
+    response.end();
+  });
 }
- 
+
 function show(response, request)
 {
  console.log("Request handler show was called.");
