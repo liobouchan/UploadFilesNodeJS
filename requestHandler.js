@@ -35,7 +35,7 @@ function upload(response,request)
  {
  if (err)
  {
- fs.unlink("c:\\tmp\\hola.pdf");
+ fs.unlink("/home/liodebian/hola.pdf");
  console.log("Value of files.upload.path : " + files.upload.path );
  fs.rename(files.upload.path,"/home/liodebian/hola.pdf");
  }
